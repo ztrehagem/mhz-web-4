@@ -34,7 +34,6 @@ const flags = {
   watchingJs: false,
 };
 
-// del.sync([destPath('!(.git)'), destPath('!(img)')]);
 del.sync([destPath('!(.git|favicon.ico|img/)')])
 
 gulp.task('enable-wathing-js', () => flags.watchingJs = true);
