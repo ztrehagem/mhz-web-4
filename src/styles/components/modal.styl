@@ -1,0 +1,68 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: scroll;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+
+  display: none;
+  transition: 0.4s ease;
+}
+
+.modal > .window {
+  background-color: white;
+  box-shadow: 0 3px 10px gray;
+  width: 90%;
+  margin: 5% auto;
+  padding: 1rem;
+}
+
+.modal > .window > .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.modal > .window .close {
+  border: 1px solid rgba(60, 60, 60, 1);
+  border-radius: 3px;
+  padding: 0;
+  background-color: transparent;
+  cursor: pointer;
+  transition: 0.4s ease;
+}
+
+.modal > .window .close:hover {
+  box-shadow: inset 0 0 10px gray;
+}
+
+.modal > .window > .header > .close {
+  flex: 0 0 2rem;
+  width: 2rem;
+  height: 2rem;
+  line-height: 2rem;
+  margin-left: 1rem;
+}
+
+.modal > .window > .header > .close > .fa {
+  vertical-align: baseline;
+}
+
+.modal > .window > .image {
+  max-width: 100%;
+  display: table;
+  margin: 1rem auto 0;
+}
+
+.modal > .window > .description {
+  margin-top: 1rem;
+}
+
+.modal > .window > .close {
+  padding: 0.3rem 0.5rem;
+  display: table;
+  margin: 1rem auto 0;
+}

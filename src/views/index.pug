@@ -3,7 +3,117 @@ html
   head
     meta(charset="utf-8")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    meta(property="og:title" content="Megahertz")
+    meta(property="og:type" content="website")
+    meta(property="og:url" content="https://ztrehagem.github.io/")
+    meta(property="og:image" content="https://ztrehagem.github.io/img/icon.png")
+    meta(property="og:locale" content="ja_JP")
+    meta(property="og:site_name" content="Megahertz")
+    meta(property="og:description" content="Megahertz's portfolio")
+    meta(name="twitter:card" content="summary")
+    meta(name="twitter:site" content="@ztrehagem")
+    meta(name="theme-color" content="#6C6C6C")
+    meta(name="msapplication-navbutton-color" content="#6C6C6C")
+    meta(name="apple-mobile-web-app-status-bar-style" content="#6C6C6C")
+
+    link(rel="stylesheet" type="text/css" href="./css/master.css")
     title Megahertz
   body
-    h1 Megahertz
-    
+    section#top.dark
+      span.symbol
+      i.arrow.fa.fa-fw.fa-caret-down
+        
+    section#profile.dark
+      button.toggle-btn(type="button")
+        h1.title Megahertz
+        span.icon: i.fa.fa-fw.fa-angle-right
+        span.caption about me
+      .collapse-area
+        p
+          | シンセサウンドをメインとしたエレクトロニックな楽曲を得意とし、Web上での公開、イベントでのCD頒布などを行っている。
+          br
+          | その傍ら、ボーカル編集やミックス・マスタリングを担うこともある。
+        ul
+          li
+            a(href="http://twitter.com/ztrehagem")
+              i.fa.fa-twitter
+              span Twitter
+          li
+            a(href="http://soundcloud.com/ztrehagem")
+              i.fa.fa-soundcloud
+              span SoundCloud
+          li
+            a(href="http://megahertz.booth.pm/")
+              i.fa.fa-shopping-cart
+              span BOOTH
+        p
+          | 上記の音楽活動を通して、ウェブサイト・特設サイト制作を経験する。
+          | その後も複数のコーポレートサイト制作やWEBサービスのフロントエンド開発などに携わる。
+          br
+          | シンプル・フラットなデザインを得意とし、レスポンシブ対応はもちろんのこと、文書としてのHTMLを意識したコードスタイルにもこだわっている。
+        ul
+          li
+            a(href="http://twitter.com/mhz_univ")
+              i.fa.fa-twitter
+              span Twitter
+          li
+            a(href="http://github.com/ztrehagem")
+              i.fa.fa-github
+              span GitHub
+              
+    section#showcase.light
+      ul
+        li#elmina01
+          a(href="")
+            span.title elmina 01
+            .thumbnail(style="background-image: url(./img/jacket/17041-elmina-elmina01.jpg)")
+          .modal
+            .window
+              .header
+                h3.title elmina 01
+                button.close(type="button"): i.fa.fa-times
+              img.image(src="./img/jacket/17041-elmina-elmina01.jpg" alt="")
+              .description
+                p elmina コンピレーションアルバム
+              button.close(type="button") 閉じる
+              rebuild
+        li#rebuild
+          a(href="")
+            span.title rebuild
+            .thumbnail(style="background-image: url(./img/jacket/15052-mhz-rebuild.png)")
+          .modal
+            .window
+              .header
+                h3.title rebuild
+                button.close(type="button"): i.fa.fa-times
+              img.image(src="./img/jacket/15052-mhz-rebuild.png" alt="")
+              .description
+                p ソロEP
+              button.close(type="button") 閉じる
+        li#tztc2
+          a(href="")
+            span.title tatsuta compilation 2
+            .thumbnail(style="background-image: url(http://info.kamomesano.info/tatsuta2/images/500100.jpg)")
+          .modal
+            .window
+              .header
+                h3.title tatsuta compilation 2
+                button.close(type="button"): i.fa.fa-times
+              img.image(src="http://info.kamomesano.info/tatsuta2/images/500100.jpg" alt="")
+              .description
+                p tatsuta recordings コンピレーションアルバム
+              button.close(type="button") 閉じる
+              
+    footer#footer.dark
+      ul.links
+        li: a(href="http://twitter.com/ztrehagem"): i.fa.fa-fw.fa-twitter
+        li: a(href="http://soundcloud.com/ztrehagem"): i.fa.fa-fw.fa-soundcloud
+        li: a(href="http://megahertz.booth.pm/"): i.fa.fa-fw.fa-shopping-cart
+        li: a(href="http://twitter.com/mhz_univ"): i.fa.fa-fw.fa-twitter
+        li: a(href="http://github.com/ztrehagem"): i.fa.fa-fw.fa-github
+      .copyright
+        i.fa.fa-fw.fa-copyright
+        span Megahertz
+      
+    script(src="https://use.fontawesome.com/c85ce4ec40.js")
+    script(src="./js/app.js")

@@ -1,0 +1,27 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: rgba(60, 60, 60, 1);
+  color: white;
+  font-family: Meiryo, 'Hiragino Kaku Gothic ProN', sans-serif;
+
+  &.locked {
+    position: absolute;
+    overflow: hidden;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+section, footer {
+  &.dark {
+    background-color: rgba(60, 60, 60, 1);
+    color: white;
+  }
+  &.light {
+    background-color: white;
+    color: rgba(60, 60, 60, 1);
+  }
+}
