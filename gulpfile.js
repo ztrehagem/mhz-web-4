@@ -7,6 +7,7 @@ const rename = require('gulp-rename');
 const uglify = require('gulp-uglify');
 const sourcemaps = require('gulp-sourcemaps');
 const plumber = require('gulp-plumber');
+const webserver = require('gulp-webserver');
 const watchify = require('watchify');
 const browserify = require('browserify');
 const babelify = require('babelify');
@@ -75,9 +76,10 @@ gulp.task('js', () => {
   return bundle();
 });
 
+gulp.task('serve', () => gulp.src(destPath()).pipe(webserver()));
+
 gulp.task('default', ['pug', 'stylus', 'js']);
 
-gulp.task('w', ['watch']);
 gulp.task('watch', ['enable-wathing-js', 'default'], () => {
   gulp.watch(WATCH.PUG, ['pug']);
   gulp.watch(WATCH.STYLUS, ['stylus']);

@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "gulp",
+    "watch": "gulp watch",
+    "serve": "gulp serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -30,6 +32,7 @@
     "gulp-sourcemaps": "^2.6.0",
     "gulp-stylus": "^2.6.0",
     "gulp-uglify": "^3.0.0",
+    "gulp-webserver": "^0.9.1",
     "pug": "^2.0.0-rc.3",
     "stylus": "^0.54.5",
     "uglify": "^0.1.5",
