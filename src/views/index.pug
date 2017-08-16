@@ -63,47 +63,33 @@ html(lang="ja")
               
     section#showcase.light
       ul
-        li#elmina01
-          a(href="")
-            span.title elmina 01
-            .thumbnail(style="background-image: url(./img/jacket/17041-elmina-elmina01.jpg)")
-          .modal
-            .window
-              .header
-                h3.title elmina 01
-                button.close(type="button"): i.fa.fa-times
-              img.image(src="./img/jacket/17041-elmina-elmina01.jpg" alt="")
-              .description
-                p elmina コンピレーションアルバム
-              button.close(type="button") 閉じる
-              rebuild
-        li#rebuild
-          a(href="")
-            span.title rebuild
-            .thumbnail(style="background-image: url(./img/jacket/15052-mhz-rebuild.png)")
-          .modal
-            .window
-              .header
-                h3.title rebuild
-                button.close(type="button"): i.fa.fa-times
-              img.image(src="./img/jacket/15052-mhz-rebuild.png" alt="")
-              .description
-                p ソロEP
-              button.close(type="button") 閉じる
-        li#tztc2
-          a(href="")
-            span.title tatsuta compilation 2
-            .thumbnail(style="background-image: url(http://info.kamomesano.info/tatsuta2/images/500100.jpg)")
-          .modal
-            .window
-              .header
-                h3.title tatsuta compilation 2
-                button.close(type="button"): i.fa.fa-times
-              img.image(src="http://info.kamomesano.info/tatsuta2/images/500100.jpg" alt="")
-              .description
-                p tatsuta recordings コンピレーションアルバム
-              button.close(type="button") 閉じる
-              
+        each c in contents
+          li(id=c.slug)
+            a(href="")
+              h3.title=c.title
+              .thumbnail(style=`background-image: url(${c.img})`)
+            .modal
+              .window
+                .header
+                  h3.title=c.title
+                  button.close(type="button"): i.fa.fa-times
+                .date=c.date
+                if c.img
+                  img.image(src=c.img alt=c.title)
+                if c.description
+                  .description
+                    each paragraph in c.description
+                      p
+                        each line in paragraph
+                          | #{line}
+                          br                          
+                if c.links
+                  ul.links
+                    each url, name in c.links
+                      li
+                        a(href=url)= name
+                button.close(type="button") 閉じる
+
     footer#footer.dark
       ul.links
         li: a(href="http://twitter.com/ztrehagem"): i.fa.fa-fw.fa-twitter

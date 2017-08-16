@@ -1,0 +1,120 @@
+[
+	{
+		"slug": "elmina01",
+		"tags": ["sound-original", "web"],
+		"title": "elmina 01",
+		"date": "2017-04",
+		"description": [
+			["elmina コンピレーションアルバム"],
+			["track.2 Floating", "track.6 Tautology", "mastering"]
+		],
+		"img": "/img/jacket/17041-elmina-elmina01.jpg",
+		"links": {
+			"特設サイト": "http://megahertz.webcrow.jp/elmina/elmina01"
+		}
+	},{
+		"slug": "voedit1703a",
+    "tags": ["vocal-edit"],
+    "links": {
+      "YouTube": "https://www.youtube.com/watch?v=ZYzQk6nfi_s"
+    },
+    "title": "【歌ってみた】You are the only_小野正利",
+		"description": [
+			["vocal-edit/mix/mastering"]
+		],
+    "date": "2017-03"
+  },{
+		"slug": "voedit1609a",
+    "tags": ["vocal-edit"],
+    "links": {
+      "YouTube": "https://www.youtube.com/watch?v=b6KQEyJRIlE"
+    },
+    "title": "【歌ってみた】Crying moon_Mint jam",
+		"description": [
+			["vocal-edit/mix/mastering"]
+		],
+    "date": "2016-09"
+  },{
+		"slug": "section-red",
+		"tags": ["sound-original","web"],
+		"links": {
+      "特設サイト": "http://goldenmoai.web.fc2.com/cds/section-red/"
+    },
+		"img": "/img/jacket/16041-gm-sectionred.jpg",
+		"title": "SECTION > RED",
+		"description": [
+			["Golden Moai コンピレーションアルバム"],
+			["track.2 Ruby", "mastering"]
+		],
+		"date": "2016-04"
+	},{
+		"slug": "web1602a",
+		"tags": ["web"],
+		"links": {
+      "Webサイト": "http://partisan.jp"
+    },
+		"title": "パルチザン合同会社 コーポレートサイト",
+		"date": "2016-02"
+	},{
+		"slug": "section-blue",
+		"tags": ["sound-original","web"],
+		"links": {
+      "特設サイト": "http://goldenmoai.web.fc2.com/cds/section-blue/"
+    },
+		"img": "/img/jacket/15101-gm-sectionblue.png",
+		"title": "SECTION > BLUE",
+		"description": [
+			["Golden Moai コンピレーションアルバム"],
+			["track.4 Ocean Blue", "mastering"]
+		],
+		"date": "2015-10"
+	},{
+		"slug": "rebuild",
+		"tags": ["sound-original","web"],
+		"links": {
+      "特設サイト": "http://megahertz.michikusa.jp/cds/rebuild/"
+    },
+		"img": "/img/jacket/15052-mhz-rebuild.png",
+		"title": "rebuild",
+		"subtitle": "Megahertz",
+		"description": [
+			["ソロEP"]
+		],
+		"date": "2015-05"
+	},{
+		"slug": "voedit1405a",
+		"tags": ["vocal-edit"],
+		"links": {
+      "ニコニコ動画": "http://www.nicovideo.jp/watch/sm23468842"
+    },
+		"title": "恋の魔法歌ってみた＠宮本彩陽",
+		"description": [
+			["vocal-edit/mix/mastering"]
+		],
+		"date": "2014-05"
+	},{
+		"slug": "tztr2",
+		"tags": ["sound-remix"],
+		"links": {
+      "特設サイト": "http://info.kamomesano.info/tatsuta2/"
+    },
+    "img": "http://info.kamomesano.info/tatsuta2/images/500100.jpg",
+		"title": "tatsuta compilation 2",
+		"description": [
+      ["tatsuta recordings コンピレーションアルバム"],
+			["track.1 echo = reverse"]
+		],
+		"date": "2014-04"
+	},{
+		"slug": "voedit1311a",
+		"tags": ["vocal-edit"],
+		"links": {
+      "ニコニコ動画": "http://www.nicovideo.jp/watch/sm22221383"
+    },
+		"title": "シリョクケンサ歌ってみた＠宮本彩陽",
+		"description": [
+			["vocal-edit/mix/mastering"]
+		],
+		"date": "2013-11"
+	}
+]

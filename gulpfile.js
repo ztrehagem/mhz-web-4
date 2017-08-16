@@ -2,6 +2,7 @@ const path = require('path');
 const gulp = require('gulp');
 const pug = require('gulp-pug');
 const stylus = require('gulp-stylus');
+const data = require('gulp-data');
 const rename = require('gulp-rename');
 const uglify = require('gulp-uglify');
 const sourcemaps = require('gulp-sourcemaps');
@@ -13,15 +14,15 @@ const buffer = require('vinyl-buffer');
 const source = require('vinyl-source-stream');
 const del = require('del');
 
-const srcPath = filepath => path.resolve(__dirname, 'src', filepath);
-const destPath = filepath => path.resolve(__dirname, 'assets', filepath);
+const srcPath = (...paths) => path.resolve(__dirname, 'src', ...paths);
+const destPath = (...paths) => path.resolve(__dirname, 'assets', ...paths);
 const ENTRIES = {
-  PUG: srcPath('views/index.pug'),
+  PUG: srcPath('views/**/*.pug'),
   STYLUS: srcPath('styles/master.styl'),
   JS: srcPath('scripts/app.js'),
 };
 const WATCH = {
-  PUG: ENTRIES.PUG,
+  PUG: [ENTRIES.PUG, srcPath('data/**/*')],
   STYLUS: srcPath('styles/**/*.styl'),
   JS: srcPath('scripts/**/*.js'),
 };
@@ -40,6 +41,7 @@ gulp.task('enable-wathing-js', () => flags.watchingJs = true);
 
 gulp.task('pug', () => gulp.src(ENTRIES.PUG)
   .pipe(plumber())
+  .pipe(data((file) => require(srcPath('data', path.basename(file.path, '.pug')))))
   .pipe(pug())
   .pipe(gulp.dest(DEST.HTML))
 );
