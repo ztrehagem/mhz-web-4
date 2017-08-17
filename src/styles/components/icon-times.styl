@@ -1,0 +1,26 @@
+.icon-times {
+  & {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    border-bottom: 2px solid $dark;
+  }
+
+  &::before {
+    transform: rotateZ(45deg);
+  }
+
+  &::after {
+    transform: rotateZ(-45deg);
+  }
+}

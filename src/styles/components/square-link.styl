@@ -1,0 +1,44 @@
+.square-link {
+  & {
+    display: inline-block;
+
+    padding: 0.3rem 0.5rem;
+    border-radius: 3px;
+    text-decoration: none;
+    font-size: 80%;
+    white-space: nowrap;
+  }
+
+  &.-light {
+    background-color: white;
+    color: $dark;
+  }
+
+  &.-dark {
+    background-color: $dark;
+    color: white;
+  }
+
+  &.-transparent {
+    background-color: transparent;
+  }
+
+  &.-bordered {
+    border-width: 1px;
+    border-style: solid;
+  }
+
+  &.-light.-bordered {
+    border-color: $dark;
+  }
+
+  &.-dark.-bordered {
+    border-color: white;
+  }
+
+  &.-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

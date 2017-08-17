@@ -1,0 +1,31 @@
+include square-button.pug
+include square-link.pug
+include icon-times.pug
+
+mixin modal-window(c)
+  .modal-window
+    .header
+      h3.title=c.title
+      +square-button.-light.-bordered.close
+        +icon-times
+        
+    .date=c.date
+    if c.img
+      img.image(src=c.img alt=c.title)
+    else
+      .noimage no image
+    if c.description
+      .description
+        each paragraph in c.description
+          p
+            each line in paragraph
+              | #{line}
+              br                          
+    if c.links
+      ul.links
+        each url, name in c.links
+          li.link
+            +square-link(url).-dark
+              i.fa.fa-fw.fa-external-link
+              span._ml-5= name
+    +square-button.-light.-bordered.close 閉じる

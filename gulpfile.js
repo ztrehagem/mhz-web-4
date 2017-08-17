@@ -18,14 +18,14 @@ const del = require('del');
 const srcPath = (...paths) => path.resolve(__dirname, 'src', ...paths);
 const destPath = (...paths) => path.resolve(__dirname, 'assets', ...paths);
 const ENTRIES = {
-  PUG: srcPath('views/**/*.pug'),
-  STYLUS: srcPath('styles/master.styl'),
-  JS: srcPath('scripts/app.js'),
+  PUG: [srcPath('views/*.pug'), srcPath('views/!(components)/**/*.pug')],
+  STYLUS: [srcPath('styles/master.styl')],
+  JS: [srcPath('scripts/app.js')],
 };
 const WATCH = {
-  PUG: [ENTRIES.PUG, srcPath('data/**/*')],
-  STYLUS: srcPath('styles/**/*.styl'),
-  JS: srcPath('scripts/**/*.js'),
+  PUG: [srcPath('views/**/*.pug'), srcPath('data/**/*')],
+  STYLUS: [srcPath('styles/**/*.styl')],
+  JS: [srcPath('scripts/**/*.js')],
 };
 const DEST = {
   HTML: destPath(''),
@@ -84,3 +84,5 @@ gulp.task('watch', ['enable-wathing-js', 'default'], () => {
   gulp.watch(WATCH.PUG, ['pug']);
   gulp.watch(WATCH.STYLUS, ['stylus']);
 });
+
+gulp.task('local', ['watch', 'serve']);

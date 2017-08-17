@@ -1,0 +1,39 @@
+.square-button {
+  & {
+    border-radius: 3px;
+    padding: 0.3rem 0.5rem;
+    cursor: pointer;
+    transition: 0.4s ease;
+  }
+
+  &.-light {
+    background-color: white;
+    color: $dark;
+  }
+
+  &.-dark {
+    background-color: $dark;
+    color: white;
+  }
+
+  &.-transparent {
+    background-color: transparent;
+  }
+
+  &.-bordered {
+    border-width: 1px;
+    border-style: solid;
+  }
+
+  &.-light.-bordered {
+    border-color: $dark;
+  }
+
+  &.-dark.-bordered {
+    border-color: white;
+  }
+
+  &:hover {
+    box-shadow: inset 0 0 10px gray;
+  }
+}

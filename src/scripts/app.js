@@ -37,7 +37,7 @@ const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
   class Modal {
     constructor($modalBg) {
       this.$modalBg = $modalBg;
-      this.$modal = this.$modalBg.querySelector(':scope > .window');
+      this.$modal = this.$modalBg.querySelector(':scope > .modal-window');
       this.$closeButtons = this.$modal.querySelectorAll(':scope .close');
 
       const onClose = () => this.closeWithPushState();
@@ -71,7 +71,7 @@ const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
   const modals = Array.from($items).reduce((modals, $item) => {
     const $anchor = $item.querySelector(':scope > a');
     const id = $item.getAttribute('id');
-    const modal = new Modal($item.querySelector(':scope > .modal'));
+    const modal = new Modal($item.querySelector(':scope > .modal-view'));
 
     $anchor.addEventListener('click', (event) => {
       event.preventDefault();

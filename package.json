@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "gulp",
+    "local": "gulp local",
     "watch": "gulp watch",
     "serve": "gulp serve",
     "test": "echo \"Error: no test specified\" && exit 1"

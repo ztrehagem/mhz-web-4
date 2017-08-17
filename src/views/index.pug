@@ -1,4 +1,8 @@
 doctype html
+
+include components/modal-view.pug
+include components/square-link.pug
+
 html(lang="ja")
   head
     meta(charset="utf-8")
@@ -12,18 +16,18 @@ html(lang="ja")
     meta(property="og:description" content="Megahertz's portfolio")
     meta(name="twitter:card" content="summary")
     meta(name="twitter:site" content="@ztrehagem")
-    meta(name="theme-color" content="#6C6C6C")
-    meta(name="msapplication-navbutton-color" content="#6C6C6C")
-    meta(name="apple-mobile-web-app-status-bar-style" content="#6C6C6C")
+    meta(name="theme-color" content="#3C3C3C")
+    meta(name="msapplication-navbutton-color" content="#3C3C3C")
+    meta(name="apple-mobile-web-app-status-bar-style" content="#3C3C3C")
 
     link(rel="stylesheet" type="text/css" href="./css/master.css")
     title Megahertz
   body
-    section#top.dark
+    section#top.-dark
       span.symbol
       i.arrow.fa.fa-fw.fa-caret-down
         
-    section#profile.dark
+    section#profile.-dark
       button.toggle-btn(type="button")
         h1.title Megahertz
         span.icon: i.fa.fa-fw.fa-angle-right
@@ -35,17 +39,17 @@ html(lang="ja")
           | その傍ら、ボーカル編集やミックス・マスタリングを担うこともある。
         ul
           li
-            a(href="http://twitter.com/ztrehagem")
+            +square-link("http://twitter.com/ztrehagem").-light
               i.fa.fa-twitter
-              span Twitter
+              span._ml-5 Twitter
           li
-            a(href="http://soundcloud.com/ztrehagem")
+            +square-link("http://soundcloud.com/ztrehagem").-light
               i.fa.fa-soundcloud
-              span SoundCloud
+              span._ml-5 SoundCloud
           li
-            a(href="http://megahertz.booth.pm/")
+            +square-link("http://megahertz.booth.pm/").-light
               i.fa.fa-shopping-cart
-              span BOOTH
+              span._ml-5 BOOTH
         p
           | 上記の音楽活動を通して、ウェブサイト・特設サイト制作を経験する。
           | その後も複数のコーポレートサイト制作やWEBサービスのフロントエンド開発などに携わる。
@@ -53,50 +57,30 @@ html(lang="ja")
           | シンプル・フラットなデザインを得意とし、レスポンシブ対応はもちろんのこと、文書としてのHTMLを意識したコードスタイルにもこだわっている。
         ul
           li
-            a(href="http://twitter.com/mhz_univ")
+            +square-link("http://twitter.com/mhz_univ").-light
               i.fa.fa-twitter
-              span Twitter
+              span._ml-5 Twitter
           li
-            a(href="http://github.com/ztrehagem")
+            +square-link("http://github.com/ztrehagem").-light
               i.fa.fa-github
-              span GitHub
+              span._ml-5 GitHub
               
-    section#showcase.light
+    section#showcase.-light
       ul
         each c in contents
           li(id=c.slug)
             a(href="")
               h3.title=c.title
               .thumbnail(style=`background-image: url(${c.img})`)
-            .modal
-              .window
-                .header
-                  h3.title=c.title
-                  button.close(type="button"): i.fa.fa-times
-                .date=c.date
-                if c.img
-                  img.image(src=c.img alt=c.title)
-                if c.description
-                  .description
-                    each paragraph in c.description
-                      p
-                        each line in paragraph
-                          | #{line}
-                          br                          
-                if c.links
-                  ul.links
-                    each url, name in c.links
-                      li
-                        a(href=url)= name
-                button.close(type="button") 閉じる
+            +modal-view(c)
 
-    footer#footer.dark
+    footer#footer.-dark
       ul.links
-        li: a(href="http://twitter.com/ztrehagem"): i.fa.fa-fw.fa-twitter
-        li: a(href="http://soundcloud.com/ztrehagem"): i.fa.fa-fw.fa-soundcloud
-        li: a(href="http://megahertz.booth.pm/"): i.fa.fa-fw.fa-shopping-cart
-        li: a(href="http://twitter.com/mhz_univ"): i.fa.fa-fw.fa-twitter
-        li: a(href="http://github.com/ztrehagem"): i.fa.fa-fw.fa-github
+        li: +square-link("http://twitter.com/ztrehagem").-icon.-light: i.fa.fa-fw.fa-twitter
+        li: +square-link("http://soundcloud.com/ztrehagem").-icon.-light: i.fa.fa-fw.fa-soundcloud
+        li: +square-link("http://megahertz.booth.pm/").-icon.-light: i.fa.fa-fw.fa-shopping-cart
+        li: +square-link("http://twitter.com/mhz_univ").-icon.-light: i.fa.fa-fw.fa-twitter
+        li: +square-link("http://github.com/ztrehagem").-icon.-light: i.fa.fa-fw.fa-github
       .copyright
         i.fa.fa-fw.fa-copyright
         span Megahertz
