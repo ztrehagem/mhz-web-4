@@ -5,7 +5,9 @@ const pug = require('gulp-pug');
 const stylus = require('gulp-stylus');
 const data = require('gulp-data');
 const rename = require('gulp-rename');
+const nop = require('gulp-nop');
 const uglify = require('gulp-uglify');
+const autoprefixer = require('gulp-autoprefixer');
 const sourcemaps = require('gulp-sourcemaps');
 const plumber = require('gulp-plumber');
 const webserver = require('gulp-webserver');
@@ -36,10 +38,13 @@ const DEST = {
   JS: destPath('js'),
 };
 const flags = {
+  production: false,
   watchingJs: false,
 };
 
-del.sync([destPath('!(.git|favicon.ico|img/)')])
+del.sync([destPath('**/*.@(html|css|js|map)')])
+
+gulp.task('enable-production', () => flags.production = true);
 
 gulp.task('enable-wathing-js', () => flags.watchingJs = true);
 
@@ -52,7 +57,10 @@ gulp.task('pug', () => gulp.src(ENTRIES.PUG)
 
 gulp.task('stylus', () => gulp.src(ENTRIES.STYLUS)
   .pipe(plumber())
+  .pipe(flags.production ? nop() : sourcemaps.init())
   .pipe(stylus({compress: true}))
+  .pipe(autoprefixer())
+  .pipe(flags.production ? nop() : sourcemaps.write('./'))
   .pipe(gulp.dest(DEST.CSS))
 );
 
@@ -61,7 +69,7 @@ gulp.task('js', () => {
 
   const bundler = browserify({
     entries: ENTRIES.JS,
-    debug: true,
+    debug: flags.production ? false : true,
     plugin: flags.watchingJs ? watchify : null,
   }).transform(babelify, {presets: ['es2015', 'es2016', 'es2017']});
 
@@ -73,7 +81,9 @@ gulp.task('js', () => {
     .pipe(source(destFileName))
     .pipe(plumber())
     .pipe(buffer())
+    .pipe(flags.production ? nop() : sourcemaps.init({loadMaps: true}))
     .pipe(uglify())
+    .pipe(flags.production ? nop() : sourcemaps.write('./'))
     .pipe(gulp.dest(DEST.JS))
     .on('end', () => console.log(`[${nowString()}] write to '${destFileName}'`));
 
@@ -85,6 +95,8 @@ gulp.task('js', () => {
 gulp.task('serve', () => gulp.src(destPath()).pipe(webserver()));
 
 gulp.task('default', ['pug', 'stylus', 'js']);
+
+gulp.task('production', ['enable-production', 'default']);
 
 gulp.task('watch', ['enable-wathing-js', 'default'], () => {
   gulp.watch(WATCH.PUG, ['pug']);
