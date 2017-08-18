@@ -1,9 +1,9 @@
 const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 (()=> {
-  const $profile = document.querySelector('.section-profile');
-  const $btn = $profile.querySelector(':scope > .toggle-btn');
-  const $area = $profile.querySelector(':scope > .collapse-area');
+  const $profile = document.querySelector('.section-profile._js');
+  const $btn = $profile.querySelector(':scope > .section-profile-button');
+  const $area = $profile.querySelector(':scope > .section-profile-body');
   const btnHeight = $btn.getBoundingClientRect().height;
 
   let isCollapsed = true;
@@ -25,11 +25,11 @@ const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
     lock() {
       this.scrollAmount = document.body.scrollTop;
       document.body.style.top = this.scrollAmount;
-      document.body.classList.add('locked');
+      document.body.classList.add('-freeze');
     }
     release() {
       document.body.style.top = 0;
-      document.body.classList.remove('locked');
+      document.body.classList.remove('-freeze');
       document.body.scrollTop = this.scrollAmount;
     }
   };
@@ -38,7 +38,7 @@ const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
     constructor($modalBg) {
       this.$modalBg = $modalBg;
       this.$modal = this.$modalBg.querySelector(':scope > .modal-window');
-      this.$closeButtons = this.$modal.querySelectorAll(':scope .close');
+      this.$closeButtons = this.$modal.querySelectorAll('.close');
 
       const onClose = () => this.closeWithPushState();
       this.$modalBg.addEventListener('click', onClose);
@@ -66,14 +66,14 @@ const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
     }
   };
 
-  const $items = document.querySelectorAll('.section-showcase > ul > li');
+  const $items = document.querySelectorAll('.section-showcase-item._js');
 
   const modals = Array.from($items).reduce((modals, $item) => {
-    const $anchor = $item.querySelector(':scope > a');
+    const $button = $item.querySelector(':scope > .button');
     const id = $item.getAttribute('id');
     const modal = new Modal($item.querySelector(':scope > .modal-view'));
 
-    $anchor.addEventListener('click', (event) => {
+    $button.addEventListener('click', (event) => {
       event.preventDefault();
       modal.open();
       window.history.pushState(null, null, `#${id}`);

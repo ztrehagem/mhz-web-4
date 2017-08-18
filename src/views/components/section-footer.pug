@@ -1,8 +1,9 @@
 include square-link
+include horizontal-list
 
 mixin section-footer
   footer.section-footer
-    ul.links
+    +horizontal-list.-center
       li: +square-link("http://twitter.com/ztrehagem").-icon.-light: i.fa.fa-fw.fa-twitter
       li: +square-link("http://soundcloud.com/ztrehagem").-icon.-light: i.fa.fa-fw.fa-soundcloud
       li: +square-link("http://megahertz.booth.pm/").-icon.-light: i.fa.fa-fw.fa-shopping-cart

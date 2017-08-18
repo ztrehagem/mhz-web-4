@@ -1,11 +1,14 @@
 doctype html
 
+block title
+  - const title = "Megahertz";
+
 html(lang="ja")
   head
     block meta
       meta(charset="utf-8")
       meta(name="viewport" content="width=device-width, initial-scale=1.0")
-      meta(property="og:title" content="Megahertz")
+      meta(property="og:title" content=title)
       meta(property="og:type" content="website")
       meta(property="og:url" content=`https://ztrehagem.github.io${uri}`)
       meta(property="og:image" content="https://ztrehagem.github.io/img/icon.png")
@@ -21,8 +24,7 @@ html(lang="ja")
     block styles
       link(rel="stylesheet" type="text/css" href="./css/master.css")
 
-    block title
-      title Megahertz
+    title=title
   body
     block contents
 
