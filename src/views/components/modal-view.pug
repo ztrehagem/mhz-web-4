@@ -1,5 +1,5 @@
 include modal-window
 
 mixin modal-view(c)
-  .modal-view
+  .modal-view._js(id=c.slug)
     +modal-window(c)

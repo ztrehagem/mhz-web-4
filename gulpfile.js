@@ -1,4 +1,5 @@
 const path = require('path');
+const fs = require('fs');
 const gulp = require('gulp');
 const pug = require('gulp-pug');
 const stylus = require('gulp-stylus');
@@ -15,12 +16,14 @@ const buffer = require('vinyl-buffer');
 const source = require('vinyl-source-stream');
 const del = require('del');
 
+const nowString = () => new Date().toLocaleTimeString();
+
 const srcPath = (...paths) => path.resolve(__dirname, 'src', ...paths);
 const destPath = (...paths) => path.resolve(__dirname, 'assets', ...paths);
 const ENTRIES = {
   PUG: [srcPath('views/*.pug'), srcPath('views/!(components|layouts)/**/*.pug')],
   STYLUS: [srcPath('styles/master.styl')],
-  JS: [srcPath('scripts/app.js')],
+  JS: fs.readdirSync(srcPath('scripts')).filter(name => name.endsWith('.js')).map(name => srcPath('scripts', name)),
 };
 const WATCH = {
   PUG: [srcPath('views/**/*.pug'), srcPath('data/**/*')],
@@ -60,16 +63,19 @@ gulp.task('js', () => {
     entries: ENTRIES.JS,
     debug: true,
     plugin: flags.watchingJs ? watchify : null,
-  }).transform(babelify, {presets: 'es2015'});
+  }).transform(babelify, {presets: ['es2015', 'es2016', 'es2017']});
 
   const bundle = () => bundler.bundle()
-    .on('error', () => console.log('bundle error'))
+    .on('error', (error) => {
+      console.log(`[${nowString()}] js bundle error`);
+      console.log(error.toString());
+    })
     .pipe(source(destFileName))
     .pipe(plumber())
     .pipe(buffer())
     .pipe(uglify())
     .pipe(gulp.dest(DEST.JS))
-    .on('end', () => console.log(`[${new Date().toLocaleTimeString()}] write to '${destFileName}'`));
+    .on('end', () => console.log(`[${nowString()}] write to '${destFileName}'`));
 
   bundler.on('update', bundle);
 
