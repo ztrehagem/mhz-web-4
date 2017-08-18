@@ -1,0 +1,11 @@
+include modal-view
+
+mixin section-showcase(contents)
+  section.section-showcase
+    ul
+      each c in contents
+        li(id=c.slug)
+          a(href="")
+            h3.title=c.title
+            .thumbnail(style=`background-image: url(${c.img})`)
+          +modal-view(c)

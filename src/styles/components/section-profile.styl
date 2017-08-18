@@ -1,94 +1,94 @@
-#profile {
-  border-bottom: 1px solid $dark;
-  height: 3rem;
-  transition: 0.4s ease;
-  overflow: hidden;
-}
+.section-profile {
+  @extend ._main-section-dark
 
-#profile > .toggle-btn {
-  display: block;
-  border: none;
-  background-color: white;
-  width: 100%;
-  height: 3rem;
-  padding: 0;
-  text-align: center;
-  cursor: pointer;
-  border-bottom: 1px solid $dark;
-  transition: 0.4s ease;
-  box-shadow: inset 0 0 20px gray;
-}
+  & {
+    border-bottom: 1px solid $dark;
+    height: 3rem;
+    transition: 0.4s ease;
+    overflow: hidden;
+  }
 
-#profile > .toggle-btn:hover {
-  /*box-shadow: inset 0 0 20px gray;*/
-}
+  & > .toggle-btn {
+    display: block;
+    border: none;
+    background-color: white;
+    width: 100%;
+    height: 3rem;
+    padding: 0;
+    text-align: center;
+    cursor: pointer;
+    border-bottom: 1px solid $dark;
+    transition: 0.4s ease;
+    box-shadow: inset 0 0 20px gray;
+  }
 
-#profile > .toggle-btn > * {
-  font-size: 1rem;
-  font-weight: normal;
-  color: $dark;
-  display: inline-block;
-  vertical-align: middle;
-}
+  & > .toggle-btn:hover {
+    /*box-shadow: inset 0 0 20px gray;*/
+  }
 
-#profile > .toggle-btn > .title {
-  // font-family: 'Poiret One';
-}
+  & > .toggle-btn > * {
+    font-size: 1rem;
+    font-weight: normal;
+    color: $dark;
+    display: inline-block;
+    vertical-align: middle;
+  }
 
-#profile > .toggle-btn > .icon > .fa {
-  transition: 0.4s ease;
-  transform: rotateZ(0deg);
-}
+  & > .toggle-btn > .title {
+    // font-family: 'Poiret One';
+  }
 
-#profile.opened > .toggle-btn > .icon > .fa {
-  transform: rotateZ(90deg);
-}
+  & > .toggle-btn > .icon > .fa {
+    transition: 0.4s ease;
+    transform: rotateZ(0deg);
+  }
 
-#profile > .toggle-btn > .caption {
-  text-decoration: underline;
-}
+  &.opened > .toggle-btn > .icon > .fa {
+    transform: rotateZ(90deg);
+  }
 
-#profile > .collapse-area {
-  padding: 1rem 0;
-}
+  & > .toggle-btn > .caption {
+    text-decoration: underline;
+  }
 
-#profile > .collapse-area > * {
-  margin: 1rem auto;
-  max-width: $base_width;
-  width: 95%;
-}
+  & > .collapse-area {
+    padding: 1rem 0;
+  }
 
-#profile > .collapse-area > p {
-  padding-top: 1rem;
-}
+  & > .collapse-area > * {
+    margin: 1rem auto;
+    max-width: $base_width;
+    width: 95%;
+  }
 
-#profile > .collapse-area > ul {
-  padding-bottom: 1rem;
-  display: flex;
-  justify-content: flex-end;
-  flex-wrap: wrap;
-}
+  & > .collapse-area > p {
+    padding-top: 1rem;
+  }
 
-#profile > .collapse-area > ul > li {
-  margin: 0.3rem;
-}
+  & > .collapse-area > ul {
+    padding-bottom: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
 
-#profile > .collapse-area > ul > li > a {
-  display: inline-block;
-  padding: 0.3rem 0.5rem;
-  border-radius: 3px;
-  background-color: white;
-  color: $dark;
-  text-decoration: none;
-  transition: 0.4s ease;
-  font-size: 0.8rem;
-  white-space: nowrap;
-}
+  & > .collapse-area > ul > li {
+    margin: 0.3rem;
+  }
 
-/*#profile > .collapse-area > ul > li > a:hover {
-  box-shadow: inset 0 0 10px white;
-}*/
+  & > .collapse-area > ul > li > a {
+    display: inline-block;
+    padding: 0.3rem 0.5rem;
+    border-radius: 3px;
+    background-color: white;
+    color: $dark;
+    text-decoration: none;
+    transition: 0.4s ease;
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
 
-#profile > .collapse-area > ul > li > a > * {
-  vertical-align: middle;
+  & > .collapse-area > ul > li > a > * {
+    vertical-align: middle;
+  }
 }

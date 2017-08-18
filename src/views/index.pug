@@ -1,89 +1,12 @@
-doctype html
+extends layouts/layout
 
-include components/modal-view.pug
-include components/square-link.pug
+include components/section-top
+include components/section-profile
+include components/section-showcase
+include components/section-footer
 
-html(lang="ja")
-  head
-    meta(charset="utf-8")
-    meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    meta(property="og:title" content="Megahertz")
-    meta(property="og:type" content="website")
-    meta(property="og:url" content="https://ztrehagem.github.io/")
-    meta(property="og:image" content="https://ztrehagem.github.io/img/icon.png")
-    meta(property="og:locale" content="ja_JP")
-    meta(property="og:site_name" content="Megahertz")
-    meta(property="og:description" content="Megahertz's portfolio")
-    meta(name="twitter:card" content="summary")
-    meta(name="twitter:site" content="@ztrehagem")
-    meta(name="theme-color" content="#3C3C3C")
-    meta(name="msapplication-navbutton-color" content="#3C3C3C")
-    meta(name="apple-mobile-web-app-status-bar-style" content="#3C3C3C")
-
-    link(rel="stylesheet" type="text/css" href="./css/master.css")
-    title Megahertz
-  body
-    section#top.-dark
-      span.symbol
-      i.arrow.fa.fa-fw.fa-caret-down
-        
-    section#profile.-dark
-      button.toggle-btn(type="button")
-        h1.title Megahertz
-        span.icon: i.fa.fa-fw.fa-angle-right
-        span.caption about me
-      .collapse-area
-        p
-          | シンセサウンドをメインとしたエレクトロニックな楽曲を得意とし、Web上での公開、イベントでのCD頒布などを行っている。
-          br
-          | その傍ら、ボーカル編集やミックス・マスタリングを担うこともある。
-        ul
-          li
-            +square-link("http://twitter.com/ztrehagem").-light
-              i.fa.fa-twitter
-              span._ml-5 Twitter
-          li
-            +square-link("http://soundcloud.com/ztrehagem").-light
-              i.fa.fa-soundcloud
-              span._ml-5 SoundCloud
-          li
-            +square-link("http://megahertz.booth.pm/").-light
-              i.fa.fa-shopping-cart
-              span._ml-5 BOOTH
-        p
-          | 上記の音楽活動を通して、ウェブサイト・特設サイト制作を経験する。
-          | その後も複数のコーポレートサイト制作やWEBサービスのフロントエンド開発などに携わる。
-          br
-          | シンプル・フラットなデザインを得意とし、レスポンシブ対応はもちろんのこと、文書としてのHTMLを意識したコードスタイルにもこだわっている。
-        ul
-          li
-            +square-link("http://twitter.com/mhz_univ").-light
-              i.fa.fa-twitter
-              span._ml-5 Twitter
-          li
-            +square-link("http://github.com/ztrehagem").-light
-              i.fa.fa-github
-              span._ml-5 GitHub
-              
-    section#showcase.-light
-      ul
-        each c in contents
-          li(id=c.slug)
-            a(href="")
-              h3.title=c.title
-              .thumbnail(style=`background-image: url(${c.img})`)
-            +modal-view(c)
-
-    footer#footer.-dark
-      ul.links
-        li: +square-link("http://twitter.com/ztrehagem").-icon.-light: i.fa.fa-fw.fa-twitter
-        li: +square-link("http://soundcloud.com/ztrehagem").-icon.-light: i.fa.fa-fw.fa-soundcloud
-        li: +square-link("http://megahertz.booth.pm/").-icon.-light: i.fa.fa-fw.fa-shopping-cart
-        li: +square-link("http://twitter.com/mhz_univ").-icon.-light: i.fa.fa-fw.fa-twitter
-        li: +square-link("http://github.com/ztrehagem").-icon.-light: i.fa.fa-fw.fa-github
-      .copyright
-        i.fa.fa-fw.fa-copyright
-        span Megahertz
-      
-    script(src="https://use.fontawesome.com/c85ce4ec40.js")
-    script(src="./js/app.js")
+block contents
+  +section-top
+  +section-profile
+  +section-showcase(contents)
+  +section-footer

@@ -18,7 +18,7 @@ const del = require('del');
 const srcPath = (...paths) => path.resolve(__dirname, 'src', ...paths);
 const destPath = (...paths) => path.resolve(__dirname, 'assets', ...paths);
 const ENTRIES = {
-  PUG: [srcPath('views/*.pug'), srcPath('views/!(components)/**/*.pug')],
+  PUG: [srcPath('views/*.pug'), srcPath('views/!(components|layouts)/**/*.pug')],
   STYLUS: [srcPath('styles/master.styl')],
   JS: [srcPath('scripts/app.js')],
 };

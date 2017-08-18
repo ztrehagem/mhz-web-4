@@ -1,7 +1,7 @@
 const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 (()=> {
-  const $profile = document.querySelector('#profile');
+  const $profile = document.querySelector('.section-profile');
   const $btn = $profile.querySelector(':scope > .toggle-btn');
   const $area = $profile.querySelector(':scope > .collapse-area');
   const btnHeight = $btn.getBoundingClientRect().height;
@@ -66,7 +66,7 @@ const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
     }
   };
 
-  const $items = document.querySelectorAll('#showcase > ul > li');
+  const $items = document.querySelectorAll('.section-showcase > ul > li');
 
   const modals = Array.from($items).reduce((modals, $item) => {
     const $anchor = $item.querySelector(':scope > a');

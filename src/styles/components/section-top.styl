@@ -1,69 +1,70 @@
-#top {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  max-height: 100vw;
-}
+.section-top {
+  @extend ._main-section-dark
 
-#top::before,
-#top::after {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 50%;
-  width: calc(50% - 2rem);
-  border-bottom: 1px solid transparent;
-  transition: 0.4s ease;
-}
+  & {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    max-height: 100vw;
+  }
 
-#top:hover::before,
-#top:hover::after {
-  display: block;
-  border-color: white;
-}
+  &::before,
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    width: calc(50% - 2rem);
+    border-bottom: 1px solid transparent;
+    transition: 0.4s ease;
+  }
 
-#top::before {
-  left: 0;
-}
+  &:hover::before,
+  &:hover::after {
+    display: block;
+    border-color: white;
+  }
 
-#top::after {
-  right: 0;
-}
+  &::before {
+    left: 0;
+  }
 
-#top > .symbol {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  transition: 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-}
+  &::after {
+    right: 0;
+  }
 
-#top > .symbol {
-  opacity: 1;
-  background-color: white;
-  width: 1.5rem;
-  height: 1.5rem;
-  border-radius: 50%;
-}
+  & > .symbol {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    opacity: 1;
+    background-color: white;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+  }
 
-#top:hover > .symbol {
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 3px;
-}
+  &:hover > .symbol {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 3px;
+  }
 
-#top > .symbol:hover {
-  transform: translate(-50%, -50%) rotateZ(90deg);
-}
+  & > .symbol:hover {
+    transform: translate(-50%, -50%) rotateZ(90deg);
+  }
 
-#top > .arrow {
-  position: absolute;
-  display: inline-block;
-  bottom: 2rem;
-  left: 50%;
-  width: 2rem;
-  height: 2rem;
-  line-height: 2rem;
-  transform: translateX(-50%);
-  animation: downfade 1.5s infinite ease;
+  & > .arrow {
+    position: absolute;
+    display: inline-block;
+    bottom: 2rem;
+    left: 50%;
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+    transform: translateX(-50%);
+    animation: downfade 1.5s infinite ease;
+  }
 }

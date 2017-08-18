@@ -1,3 +1,4 @@
 module.exports = {
-  contents: require('./contents'),
+  contents: require('./json/contents'),
+  uri: '/',
 };
