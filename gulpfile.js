@@ -48,7 +48,7 @@ const flags = {
   watchingJs: false,
 };
 
-del.sync([destPath('**/*.@(html|css|js|map)')])
+gulp.task('clean', () => del.sync([destPath('**/*.@(html|css|js|map)')]));
 
 gulp.task('enable-production', () => flags.production = true);
 
@@ -98,19 +98,17 @@ gulp.task('js', () => {
   return bundle();
 });
 
-gulp.task('serve', () => gulp.src(destPath()).pipe(webserver()));
-
-gulp.task('default', ['pug', 'stylus', 'js']);
-
-gulp.task('digest', ['default'], () => gulp.src([ASSETS.CSS, ASSETS.JS])
+gulp.task('default', ['clean', 'pug', 'stylus', 'js'], () => gulp.src([ASSETS.CSS, ASSETS.JS])
   .pipe(md5(null, ASSETS.HTML))
 );
 
-gulp.task('production', ['enable-production', 'default', 'digest']);
+gulp.task('production', ['enable-production', 'default']);
 
 gulp.task('watch', ['enable-wathing-js', 'default'], () => {
   gulp.watch(WATCH.PUG, ['pug']);
   gulp.watch(WATCH.STYLUS, ['stylus']);
 });
+
+gulp.task('serve', () => gulp.src(destPath()).pipe(webserver()));
 
 gulp.task('local', ['watch', 'serve']);

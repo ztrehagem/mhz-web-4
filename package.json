@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "gulp",
+    "clean": "gulp clean",
     "local": "gulp local",
     "watch": "gulp watch",
     "serve": "gulp serve",
