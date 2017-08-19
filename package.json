@@ -31,6 +31,7 @@
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.0.0",
     "gulp-data": "^1.2.1",
+    "gulp-md5-assets": "^0.2.0",
     "gulp-nop": "0.0.3",
     "gulp-plumber": "^1.1.0",
     "gulp-pug": "^3.3.0",

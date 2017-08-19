@@ -9,6 +9,7 @@ const nop = require('gulp-nop');
 const uglify = require('gulp-uglify');
 const autoprefixer = require('gulp-autoprefixer');
 const sourcemaps = require('gulp-sourcemaps');
+const md5 = require('gulp-md5-assets');
 const plumber = require('gulp-plumber');
 const webserver = require('gulp-webserver');
 const watchify = require('watchify');
@@ -36,6 +37,11 @@ const DEST = {
   HTML: destPath(''),
   CSS: destPath('css'),
   JS: destPath('js'),
+};
+const ASSETS = {
+  HTML: destPath('**/*.html'),
+  CSS: destPath('**/*.css'),
+  JS: destPath('**/*.js'),
 };
 const flags = {
   production: false,
@@ -96,7 +102,11 @@ gulp.task('serve', () => gulp.src(destPath()).pipe(webserver()));
 
 gulp.task('default', ['pug', 'stylus', 'js']);
 
-gulp.task('production', ['enable-production', 'default']);
+gulp.task('digest', ['default'], () => gulp.src([ASSETS.CSS, ASSETS.JS])
+  .pipe(md5(null, ASSETS.HTML))
+);
+
+gulp.task('production', ['enable-production', 'default', 'digest']);
 
 gulp.task('watch', ['enable-wathing-js', 'default'], () => {
   gulp.watch(WATCH.PUG, ['pug']);
