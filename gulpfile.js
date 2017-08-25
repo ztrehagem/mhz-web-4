@@ -77,7 +77,15 @@ gulp.task('js', () => {
     entries: ENTRIES.JS,
     debug: flags.production ? false : true,
     plugin: flags.watchingJs ? watchify : null,
-  }).transform(babelify, {presets: ['es2015', 'es2016', 'es2017']});
+  }).transform(babelify, {
+    presets: ['es2015', 'es2016', 'es2017'],
+    plugins: [['transform-runtime', {
+      helpers: false,
+      polyfill: false,
+      regenerator: true,
+      moduleName: 'babel-runtime'
+    }]],
+  });
 
   const bundle = () => bundler.bundle()
     .on('error', (error) => {

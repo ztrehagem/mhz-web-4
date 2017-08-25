@@ -19,13 +19,14 @@ export default class ModalView extends Component {
     this.$window.addEventListener('click', event => event.stopPropagation());
   }
 
-  open() {
+  async open() {
     ModalView.activeModal = this;
     BodyFreezer.freeze();
     this.$root.style.display = 'block';
     this.$root.style.opacity = 0;
     this.$root.scrollTop = 0;
-    wait(10).then(() => this.$root.style.opacity = 1);
+    await wait(10);
+    this.$root.style.opacity = 1;
   }
 
   openWithPushState() {
@@ -33,11 +34,12 @@ export default class ModalView extends Component {
     this.open();
   }
 
-  close() {
+  async close() {
     ModalView.activeModal = null;
     BodyFreezer.release();
     this.$root.style.opacity = 0;
-    return wait(410).then(() => this.$root.style.display = 'none');
+    await wait(410);
+    this.$root.style.display = 'none';
   }
 
   closeWithPushState() {
@@ -50,10 +52,11 @@ export default class ModalView extends Component {
     return new ModalView($target);
   }
 
-  static _detectHashWithOpenFrom(modalViews) {
+  static async _detectHashWithOpenFrom(modalViews) {
     const id = location.hash.substring(1);
     const target = modalViews.filter(modalView => modalView.id == id)[0];
-    (ModalView.activeModal ? ModalView.activeModal.close() : wait(0)).then(() => target && target.open());
+    if (ModalView.activeModal) await ModalView.activeModal.close();
+    if (target) await target.open();
   }
 
   static setOnPopstateTarget(modalViews) {
