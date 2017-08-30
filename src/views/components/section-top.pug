@@ -1,4 +1,7 @@
+include scroll-button
+
 mixin section-top
   section.section-top
     span.symbol
-    i.arrow.fa.fa-fw.fa-caret-down
+    +scroll-button(".section-profile").-downfade
+      i.icon.fa.fa-fw.fa-caret-down

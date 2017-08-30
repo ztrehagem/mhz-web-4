@@ -43,6 +43,7 @@
     "gulp-uglify": "^3.0.0",
     "gulp-webserver": "^0.9.1",
     "pug": "^2.0.0-rc.3",
+    "smoothscroll-module": "git+https://github.com/ztrehagem/smoothscroll-module.git#v1.0.1",
     "stylus": "^0.54.5",
     "uglify": "^0.1.5",
     "vinyl-buffer": "^1.0.0",
