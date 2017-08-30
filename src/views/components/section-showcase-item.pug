@@ -2,5 +2,6 @@ mixin section-showcase-item(c)
   li.section-showcase-item._js
     button.button(type="button")
       h3.title=c.title
-      .thumbnail(style=`background-image: url(${c.img})`)
+      if c.img
+        .thumbnail(style=`background-image: url(${c.img})`)
     +modal-view(c)
