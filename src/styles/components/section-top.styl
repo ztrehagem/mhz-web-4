@@ -2,10 +2,15 @@
   @extend ._main-section-dark
 
   & {
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
     width: 100vw;
     height: 100vh;
     max-height: 100vw;
+    animation: overlay-root-disappear 1.5s ease 3.2s 1;
+    animation-fill-mode: forwards;
   }
 
   &::before,
@@ -16,13 +21,10 @@
     top: 50%;
     width: calc(50% - 2rem);
     border-bottom: 1px solid transparent;
-    transition: 0.4s ease;
-  }
-
-  &:hover::before,
-  &:hover::after {
-    display: block;
-    border-color: white;
+    animation:
+      overlay-borders-appear 0.5s ease 0.3s 1,
+      overlay-borders-expand 1s ease 2.2s 1;
+    animation-fill-mode: forwards;
   }
 
   &::before {
@@ -38,31 +40,11 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    transition: 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
     opacity: 1;
     background-color: white;
-    width: 1.5rem;
-    height: 1.5rem;
-    border-radius: 50%;
-  }
-
-  &:hover > .symbol {
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 3px;
-  }
-
-  > .symbol:hover {
-    transform: translate(-50%, -50%) rotateZ(90deg);
-  }
-
-  > .scroll-button {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 2rem;
-    height: 2rem;
-    line-height: 2rem;
+    animation:
+      overlay-symbol-appear 0.5s $bezier 0.3s 1,
+      overlay-symbol-rotate 0.5s $bezier 1s 1;
+    animation-fill-mode: forwards;
   }
 }

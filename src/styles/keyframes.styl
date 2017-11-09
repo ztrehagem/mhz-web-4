@@ -1,3 +1,60 @@
+@keyframes overlay-root-disappear {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes overlay-borders-appear {
+  from {
+    border-color: transparent;
+  }
+  to {
+    border-color: white;
+  }
+}
+@keyframes overlay-borders-expand {
+  0% {
+    width: calc(50% - 2rem);
+  }
+  30% {
+    width: calc(50% + 2rem);
+    border-width: 3rem;
+    top: calc(50% - 1.5rem);
+  }
+  100% {
+    width: 50%;
+    border-width: 100vh;
+    top: 0;
+  }
+}
+
+@keyframes overlay-symbol-appear {
+  from {
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+  }
+  to {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 3px;
+  }
+}
+
+@keyframes overlay-symbol-rotate {
+  from {
+    transform: translate(-50%, -50%) rotateZ(0);
+  }
+  to {
+    transform: translate(-50%, -50%) rotateZ(90deg);
+  }
+}
+
 @keyframes downfade {
   from {
     bottom: 2rem;
