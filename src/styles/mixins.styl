@@ -3,3 +3,29 @@ hover() {
     {block}
   }
 }
+
+media($query) {
+  @media $query {
+    /{selector()} {
+      {block}
+    }
+  }
+}
+
+media-laptop() {
+  +media("(max-width: 1024px)") {
+    {block}
+  }
+}
+
+media-tablet() {
+  +media("(max-width: 768px)") {
+    {block}
+  }
+}
+
+media-mobile() {
+  +media("(max-width: 425px)") {
+    {block}
+  }
+}
