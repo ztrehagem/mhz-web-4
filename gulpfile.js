@@ -1,10 +1,9 @@
 const path = require('path');
 const fs = require('fs');
 const gulp = require('gulp');
+const gutil = require('gulp-util');
 const pug = require('gulp-pug');
-const stylus = require('gulp-stylus');
 const data = require('gulp-data');
-const rename = require('gulp-rename');
 const nop = require('gulp-nop');
 const uglify = require('gulp-uglify');
 const autoprefixer = require('gulp-autoprefixer');
@@ -19,7 +18,7 @@ const buffer = require('vinyl-buffer');
 const source = require('vinyl-source-stream');
 const del = require('del');
 
-const nowString = () => new Date().toLocaleTimeString();
+const stylup = require('./stylup');
 
 const srcPath = (...paths) => path.resolve(__dirname, 'src', ...paths);
 const destPath = (...paths) => path.resolve(__dirname, 'assets', ...paths);
@@ -45,14 +44,14 @@ const ASSETS = {
 };
 const flags = {
   production: false,
-  watchingJs: false,
+  watch: false,
 };
 
 gulp.task('clean', () => del.sync([destPath('**/*.@(html|css|js|map)')]));
 
 gulp.task('enable-production', () => flags.production = true);
 
-gulp.task('enable-wathing-js', () => flags.watchingJs = true);
+gulp.task('enable-watch', () => flags.watch = true);
 
 gulp.task('pug', () => gulp.src(ENTRIES.PUG)
   .pipe(plumber())
@@ -61,13 +60,14 @@ gulp.task('pug', () => gulp.src(ENTRIES.PUG)
   .pipe(gulp.dest(DEST.HTML))
 );
 
-gulp.task('stylus', () => gulp.src(ENTRIES.STYLUS)
-  .pipe(plumber())
-  .pipe(flags.production ? nop() : sourcemaps.init())
-  .pipe(stylus({compress: true}))
-  .pipe(autoprefixer())
-  .pipe(flags.production ? nop() : sourcemaps.write('./'))
-  .pipe(gulp.dest(DEST.CSS))
+gulp.task('stylus', () => gulp.src(ENTRIES.STYLUS, { read: false })
+  .pipe(stylup({
+    destDir: 'assets/css',
+    watch: flags.watch,
+    sourcemap: !flags.production,
+    poststylus: ['autoprefixer', 'csswring'],
+    stdio: 'inherit',
+  }))
 );
 
 gulp.task('js', () => {
@@ -76,7 +76,7 @@ gulp.task('js', () => {
   const bundler = browserify({
     entries: ENTRIES.JS,
     debug: flags.production ? false : true,
-    plugin: flags.watchingJs ? watchify : null,
+    plugin: flags.watch ? watchify : null,
   }).transform(babelify, {
     presets: ['es2015', 'es2016', 'es2017'],
     plugins: [['transform-runtime', {
@@ -89,8 +89,8 @@ gulp.task('js', () => {
 
   const bundle = () => bundler.bundle()
     .on('error', (error) => {
-      console.log(`[${nowString()}] js bundle error`);
-      console.log(error.toString());
+      gutil.log('js bundle error');
+      gutil.log(error.toString());
     })
     .pipe(source(destFileName))
     .pipe(plumber())
@@ -99,7 +99,7 @@ gulp.task('js', () => {
     .pipe(uglify())
     .pipe(flags.production ? nop() : sourcemaps.write('./'))
     .pipe(gulp.dest(DEST.JS))
-    .on('end', () => console.log(`[${nowString()}] write to '${destFileName}'`));
+    .on('end', () => gutil.log(`write to '${destFileName}'`));
 
   bundler.on('update', bundle);
 
@@ -112,9 +112,8 @@ gulp.task('default', ['clean', 'pug', 'stylus', 'js'], () => gulp.src([ASSETS.CS
 
 gulp.task('production', ['enable-production', 'default']);
 
-gulp.task('watch', ['enable-wathing-js', 'default'], () => {
+gulp.task('watch', ['enable-watch', 'default'], () => {
   gulp.watch(WATCH.PUG, ['pug']);
-  gulp.watch(WATCH.STYLUS, ['stylus']);
 });
 
 gulp.task('serve', () => gulp.src(destPath()).pipe(webserver()));
